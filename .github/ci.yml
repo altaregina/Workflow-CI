@@ -28,8 +28,8 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install mlflow scikit-learn pandas
+          pip install -r requirements.txt
 
       - name: Run MLflow project
         run: |
-          mlflow run .
+          mlflow run . --no-conda
