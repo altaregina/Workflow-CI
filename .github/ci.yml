@@ -36,7 +36,8 @@ jobs:
     # 5. Run MLflow Project
     - name: Run MLflow Project
       run: |
-        mlflow run MLProject
+        cd MLProject
+        mlflow run .
 
     # 6. Get latest MLflow run_id
     - name: Get latest MLflow run_id
