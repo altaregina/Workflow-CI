@@ -1,7 +1,9 @@
-name: heart-disease-ci
+name: CI-Heart-Disease
 
+# Gunakan environment Python bawaan (no conda)
+conda_env: null
 entry_points:
   main:
-    command: "python modelling.py"
-
-conda_env: null
+    parameters:
+      data_path: {type: str, default: "namadataset_preprocessing/heart_clean.csv"}
+    command: "python modelling.py --data_path {data_path}"

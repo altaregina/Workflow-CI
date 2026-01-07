@@ -1,29 +1,27 @@
-name: mlflow-ci
+name: MLflow CI Basic
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
+  pull_request:
+    branches: [main]
 
 jobs:
-  run-mlflow:
+  mlflow:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
+    - uses: actions/checkout@v3
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.12.7'
+    - name: Setup Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.12"
 
-      - name: Install dependencies
-        run: |
-          pip install mlflow pandas scikit-learn
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pandas scikit-learn mlflow
 
-      - name: Run MLflow Project
-        env:
-          MLFLOW_CONDA_CREATE_ENV: "false"
-          MLFLOW_USE_CONDA: "false"
-        run: |
-            mlflow run .
+    - name: Run MLflow Project
+      run: mlflow run .

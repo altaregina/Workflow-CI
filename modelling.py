@@ -1,16 +1,22 @@
 import pandas as pd
 import mlflow
 import mlflow.sklearn
+import argparse
 
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score
 
+# Parse argument
+parser = argparse.ArgumentParser()
+parser.add_argument("--data_path", type=str, default="namadataset_preprocessing/heart_clean.csv")
+args = parser.parse_args()
+
 # MLflow config
 mlflow.set_experiment("CI-Heart-Disease")
 
 # Load data
-df = pd.read_csv("namadataset_preprocessing/heart_clean.csv")
+df = pd.read_csv(args.data_path)
 
 X = df.drop("target", axis=1)
 y = df["target"]
