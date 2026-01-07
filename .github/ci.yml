@@ -25,4 +25,5 @@ jobs:
         env:
           MLFLOW_CONDA_CREATE_ENV: "false"
           MLFLOW_USE_CONDA: "false"
-        run: mlflow run .
+        run: |
+            mlflow run .

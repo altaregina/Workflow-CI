@@ -3,3 +3,5 @@ name: heart-disease-ci
 entry_points:
   main:
     command: "python modelling.py"
+
+conda_env: null
